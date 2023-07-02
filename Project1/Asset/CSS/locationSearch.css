@@ -1,0 +1,100 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 450px;
+    background-color: aqua;
+}
+
+.hero-section {
+    background: url("../Image/102728-56-1920x1080.jpg") 50% no-repeat;
+    background-size: cover;
+    height: 20vh;
+    text-align: center;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.hero-section .hero-section-text {
+    color: #fefefe;
+    text-shadow: 1px 1px 2px #0a0a0a;
+}
+
+.input-group-rounded {
+    padding: 2%
+}
+
+.input-group-rounded .input-group-field {
+    border-radius: 5000px 0 0 5000px;
+    padding-left: 1rem;
+}
+
+.input-group-rounded .input-group-button {
+    border-radius: 0 5000px 5000px 0;
+    font-size: 0.8rem;
+}
+
+
+body {
+    font-family: sans-serif;
+    background: #226083;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 20vh;
+    bottom: 0;
+    max-height: 100%;
+    width: 300px;
+    border-left: 1px solid #ddd;
+    background: white;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.destinationCardNav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.destinationCardList {
+    overflow-y: auto;
+}
+
+.destinationCard {
+    font-size: 1rem;
+    padding: 2rem;
+    background-color: #56524b;
+    margin: 10px;
+    height: 250px;
+}
+
+.destinationImage {
+    object-fit: cover;
+    background-image: url(../Image/102728-56-1920x1080.jpg);
+    background-size: cover;
+}
+
+.destinationBrief {
+    object-fit: cover;
+    height: 50px;
+    background-color: red;
+}
+
+.destinationDetail {
+
+    background-color: blue;
+}
