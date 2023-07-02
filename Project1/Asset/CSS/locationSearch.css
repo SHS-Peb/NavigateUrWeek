@@ -6,7 +6,6 @@
 
 body {
     min-width: 450px;
-    background-color: aqua;
 }
 
 .hero-section {
@@ -47,7 +46,6 @@ body {
 
 body {
     font-family: sans-serif;
-    background: #226083;
 }
 
 .sidebar {
@@ -84,7 +82,7 @@ body {
 
 .destinationImage {
     object-fit: cover;
-    background-image: url(../Image/102728-56-1920x1080.jpg);
+    /* background-image: url(../Image/102728-56-1920x1080.jpg); */
     background-size: cover;
 }
 
@@ -94,7 +92,10 @@ body {
     background-color: red;
 }
 
-.destinationDetail {
+.destinationMap {
+    position: fixed;
+    height: 80vh;
+    left: 50vw;
 
-    background-color: blue;
+    /* background-color: blue; */
 }

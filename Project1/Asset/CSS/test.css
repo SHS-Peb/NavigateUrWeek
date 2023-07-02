@@ -5,55 +5,13 @@
 }
 
 body {
-    font-family: sans-serif;
-    background: #226083;
+    margin: 0;
+    padding: 0;
 }
 
-.sidebar {
-    position: fixed;
-    left: 0;
+#map {
+    position: absolute;
     top: 0;
     bottom: 0;
-    max-height: 100%;
-    width: 300px;
-    border-left: 1px solid #ddd;
-    background: white;
-    display: flex;
-    flex-direction: column;
-}
-
-
-.destinationCardNav {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.destinationCardList {
-    overflow-y: auto;
-}
-
-.destinationCard {
-    font-size: 1rem;
-    padding: 2rem;
-    background-color: #56524b;
-    margin: 10px;
-    height: 250px;
-}
-
-.destinationImage {
-    object-fit: cover;
-    background-image: url(../Image/102728-56-1920x1080.jpg);
-    background-size: cover;
-}
-
-.destinationBrief {
-    object-fit: cover;
-    height: 50px;
-    background-color: red;
-}
-
-.destinationDetail {
-
-    background-color: blue;
+    width: 100%;
 }

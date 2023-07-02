@@ -11,6 +11,10 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="../CSS/locationSearch.css" />
 
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+
+
 
 </head>
 
@@ -33,40 +37,43 @@
     </header>
 
     <main class="grid-x">
-        <div class="small-12 medium-6 large-6">asdfafsdfs</div>
-
-        <div class="sidebar small-12 medium-6 large-6">
+        <div class="sidebar small-6 medium-6 large-6">
             <nav id="destinationCardNav" class="destinationCardNav" style="overflow:visible;">
                 <ul class="destinationCardList">
                     <li class="destinationCard grid-x ">
-                        <img class="small-12 medium-12 large-6 destinationImage" alt="img" />
+                        <img class="small-12 medium-12 large-6 destinationImage" alt="img"
+                            src="../Image/102728-56-1920x1080.jpg" />
                         <div class="small-12 medium-12 large-6 destinationBrief">text</div>
                     </li>
 
                     <li class="destinationCard grid-x">
-                        <img class="small-12 medium-12 large-6 destinationImage" alt="img" />
+                        <img class="small-12 medium-12 large-6 destinationImage" alt="img"
+                            src="../Image/102728-56-1920x1080.jpg" />
                         <div class="small-12 medium-12 large-6 destinationBrief">text</div>
                     </li>
 
                     <li class="destinationCard grid-x">
-                        <img class="small-12 medium-12 large-6 destinationImage" alt="img" />
+                        <img class="small-12 medium-12 large-6 destinationImage" alt="img"
+                            src="../Image/102728-56-1920x1080.jpg" />
                         <div class="small-12 medium-12 large-6 destinationBrief">text</div>
                     </li>
 
                     <li class="destinationCard grid-x">
-                        <img class="small-12 medium-12 large-6 destinationImage" alt="img" />
+                        <img class="small-12 medium-12 large-6 destinationImage" alt="img"
+                            src="../Image/102728-56-1920x1080.jpg" />
                         <div class="small-12 medium-12 large-6 destinationBrief">text</div>
                     </li>
 
                     <li class="destinationCard grid-x">
-                        <img class="small-12 medium-12 large-6 destinationImage" alt="img" />
+                        <img class="small-12 medium-12 large-6 destinationImage" alt="img"
+                            src="../Image/102728-56-1920x1080.jpg" />
                         <div class="small-12 medium-12 large-6 destinationBrief">text</div>
                     </li>
                 </ul>
             </nav>
         </div>
 
-
+        <div id="destinationMap" class="destinationMap small-6 medium-6 large-6"></div>
     </main>
 
 
@@ -79,11 +86,10 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js"
         crossorigin="anonymous"></script>
-
     <script src="../JS/locationSearch.js"></script>
 
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/fundation@0.0.56/index.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/fundation@0.0.56/index.min.js"></script>
 
 </body>
 
