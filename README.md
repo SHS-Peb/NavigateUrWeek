@@ -1,1 +1,1 @@
-# NavigateURWeek
+# Navigate-Your-Week
