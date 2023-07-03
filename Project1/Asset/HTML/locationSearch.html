@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Search</title>
+
+    <link rel="stylesheet" href="../CSS/reset.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="../CSS/locationSearch.css" />
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
+        type="text/css">
+
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.css"
+        type="text/css">
+
+</head>
+
+<body>
+
+    <header>
+        <div class="grid-x hero-section">
+            <div class="cell hero-section-text">
+                <h1>NavigateUrWeek</h1>
+                <h5>go wherever</h5>
+            </div>
+
+            <div class="geocoderContainer">
+                <div id="geocoder" class="geocoderInput" style="width: 100%;"></div>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="grid-x">
+        <div class="sidebar small-6 medium-6 large-6">
+            <nav id="destinationCardNav" class="destinationCardNav" style="overflow:visible;">
+                <div class="destinationCardList">
+                    <div class="destinationCard grid-x ">
+                        <img class="small-12 medium-12 large-12 destinationImage" alt="img"
+                            src="../Image/102728-56-1920x1080.jpg" />
+                        <div class="small-12 medium-12 large-12 desti-weather">Weather Data</div>
+                        <button class="small-12 medium-6 large-6 desti-route-button">Search Route</button>
+
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+
+        <div id="destinationMap" class="destinationMap small-6 medium-6 large-6"></div>
+    </main>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js"
+        crossorigin="anonymous"></script>
+    <script src="../JS/locationSearch.js"></script>
+
+</body>
+
+</html>
+
+
+
+</html>
