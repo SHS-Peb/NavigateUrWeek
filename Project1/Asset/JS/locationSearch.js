@@ -58,9 +58,14 @@ const geocoder = new MapboxGeocoder({
 geocoder.on('result', (e) => {
     // results.innerText = JSON.stringify(e.result, null, 2);
     // console.log(JSON.stringify(e.result));
+    // console.log(e.result.json());
+
 
     const data = e.result;
-    console.log(data.center);
+
+    // display the image based on the search result
+    getDestinationImage(data.text)
+
     map.center = data.center;
     // console.log(e.result);
 });
@@ -72,6 +77,7 @@ geocoder.on('clear', () => {
 
 // link external geocoder to the map
 document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
 
 map.addControl(
     new mapboxgl.GeolocateControl({
@@ -93,7 +99,6 @@ map.addControl(
 );
 
 
-
 // UI
 var button = document.querySelector('.desti-route-button');
 
@@ -103,3 +108,61 @@ button.addEventListener('click', () => {
         button.classList.remove('clicked');
     }, 200);
 });
+
+let destinationImage = document.getElementById("destinationImage");
+
+const client_id = "g9ZK5ag6po5d9rJet7HIMBi2dJdI4GDcL2KoZyZDOyg";
+// let destination = "Sydney";
+let page = "1";
+let per_page = "5";
+
+let getDestinationImage = (destination) => {
+    var apiUrl = `https://api.unsplash.com/search/photos/?page=${page}&per_page=${per_page}&query=${destination}&client_id=${client_id}`;
+
+    fetch(apiUrl)
+        .then((response) => {
+            if (response.ok) {
+                // console.log(response.j);
+                response.json().then((data) => {
+                    imageUrl = data.results[0].urls.regular;
+                    console.log(imageUrl);
+                    // displayRepos(data, user);
+                    destinationImage.src = imageUrl;
+                });
+            } else {
+                alert('Error: ' + response.statusText);
+            }
+        })
+        .catch(function (error) {
+            alert('Unable to connect');
+        });
+};
+
+// getDestinationImage();
+
+// var options = {
+//     accessibility: true,
+//     prevNextButtons: true,
+//     pageDots: true,
+//     setGallerySize: false,
+//     arrowShape: {
+//         x0: 10,
+//         x1: 60,
+//         y1: 50,
+//         x2: 60,
+//         y2: 45,
+//         x3: 15
+//     }
+// };
+
+// var carousel = document.querySelector('[data-carousel]');
+// var slides = document.getElementsByClassName('carousel-cell');
+// var flkty = new Flickity(carousel, options);
+
+// flkty.on('scroll', function () {
+//     flkty.slides.forEach(function (slide, i) {
+//         var image = slides[i];
+//         var x = (slide.target + flkty.x) * -1 / 3;
+//         image.style.backgroundPosition = x + 'px';
+//     });
+// });
