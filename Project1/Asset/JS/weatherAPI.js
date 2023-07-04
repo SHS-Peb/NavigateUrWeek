@@ -2,19 +2,10 @@ var baseURL = 'http://api.weatherapi.com/v1/';
 var forecast = 'forecast.json?';
 var current = 'current.json?';
 var key = 'key=c5136b5d7b324af38a1103907232906';
-var searchLocation = 'Sydney';
+var searchLocation;
 var finalURL;
 
-
-
-// var getLocation = function () {
-//     searchLocation = localStorage.getItem('location');
-//     if (searchLocation == null) {
-//         searchLocation = "Sydney";
-//     };
-// };
-
-// getLocation();
+searchLocation = "Sydney"
 
 finalURL = baseURL + forecast + key + '&q=' + searchLocation;
 
@@ -31,14 +22,17 @@ function callApi(requestUrl) {
             return response.json();
         })
         .then((data) => {
+            console.log(data)
             this.displayWeather(data);
         })
 }
 
 
 function displayWeather(data) {
-    var cityNameEl = document.getElementById('cityName')
+    var weatherEl = document.getElementsByClassName('desti-weather')
+    var cityNameEl = document.createElement('div')
     cityNameEl.textContent = data.location.name + ", " + data.location.region + ", " + data.location.country
-    var currentTempEl = document.getElementById('currentTemp')
+
+    var currentTempEl = document.createElement('div')
     currentTempEl.textContent = data.current.feelslike_c
 }
