@@ -51,7 +51,11 @@
                     <div class="destinationCard grid-x ">
                         <img class="small-12 medium-12 large-12 destinationImage" alt="img"
                             src="../Image/102728-56-1920x1080.jpg" />
-                        <div class="small-12 medium-12 large-12 desti-weather">Weather Data</div>
+                        <div class="small-12 medium-12 large-12 desti-weather">Weather Data
+                            <div id="cityName"></div>
+                            <div>Current Temperature: <span id="currentTemp"></span></div>
+                            <div></div>
+                        </div>
                         <button class="small-12 medium-6 large-6 desti-route-button">Search Route</button>
 
                     </div>
@@ -71,6 +75,7 @@
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/js/foundation.min.js"
         crossorigin="anonymous"></script>
     <script src="../JS/locationSearch.js"></script>
+    <script src="../JS/weatherAPI.js"></script>
 
 </body>
 
