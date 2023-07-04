@@ -1,3 +1,6 @@
+// import { updateDataFromWeatherAPI } from './weatherAPI.js';
+
+
 //---------------- mapbox API -----------------
 
 const mapBoxToken = "pk.eyJ1IjoiaG9yYWNlaG91IiwiYSI6ImNsamgwMHVubzBlYnkzZnFnN3U4amZxbmgifQ.mxqdrB6-rH2nfiQ4LA7aug";
@@ -38,7 +41,7 @@ geocoder.on('result', (event) => {
     // display the image based on the search result
     getDestinationImage(data.text);
 
-    // getWeatherAPI(data.text);
+    // updateDataFromWeatherAPI(data.text);
 
     map.center = data.center;
 });
