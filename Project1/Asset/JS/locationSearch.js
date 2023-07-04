@@ -58,9 +58,14 @@ const geocoder = new MapboxGeocoder({
 geocoder.on('result', (e) => {
     // results.innerText = JSON.stringify(e.result, null, 2);
     // console.log(JSON.stringify(e.result));
+    // console.log(e.result.json());
+
 
     const data = e.result;
-    console.log(data.center);
+
+    // display the image based on the search result
+    getDestinationImage(data.text)
+
     map.center = data.center;
     // console.log(e.result);
 });
@@ -72,6 +77,7 @@ geocoder.on('clear', () => {
 
 // link external geocoder to the map
 document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
 
 map.addControl(
     new mapboxgl.GeolocateControl({
@@ -93,7 +99,6 @@ map.addControl(
 );
 
 
-
 // UI
 var button = document.querySelector('.desti-route-button');
 
@@ -103,3 +108,42 @@ button.addEventListener('click', () => {
         button.classList.remove('clicked');
     }, 200);
 });
+
+let destinationImage = document.getElementById("destinationImage");
+
+const client_id = "g9ZK5ag6po5d9rJet7HIMBi2dJdI4GDcL2KoZyZDOyg";
+// let destination = "Sydney";
+let page = "1";
+let per_page = "7";
+
+let getDestinationImage = (destination) => {
+    let apiUrl = `https://api.unsplash.com/search/photos/?page=${page}&per_page=${per_page}&query=${destination}&client_id=${client_id}`;
+    let slides = document.getElementsByClassName('carousel-cell');
+    let titles = document.getElementsByClassName('title');
+
+    fetch(apiUrl)
+        .then((response) => {
+            if (response.ok) {
+                // console.log(response.j);
+                response.json().then((data) => {
+
+
+                    for (let i = 0; i < slides.length; i++) {
+                        // const element = array[index];
+                        let url = data.results[i].urls.regular;
+                        let alt_description = data.results[i].alt_description;
+
+                        slides[i].style.backgroundImage = `url(${url})`;
+                        titles[i].textContent = alt_description;
+                        console.log(url);
+                    }
+
+                });
+            } else {
+                alert('Error: ' + response.statusText);
+            }
+        })
+        .catch(function (error) {
+            alert('Unable to connect');
+        });
+};
