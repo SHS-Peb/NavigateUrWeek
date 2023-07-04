@@ -4,14 +4,11 @@
     box-sizing: border-box;
 }
 
-
-
 body {
     min-width: 450px;
     font-family: sans-serif;
 
 }
-
 
 header {
     position: relative;
@@ -21,7 +18,6 @@ header {
     position: absolute;
     top: 15%;
     left: 42%;
-
     font-family: "Roboto Slab", serif;
     font-size: 2.5rem;
     line-height: 1.2em;
@@ -43,42 +39,6 @@ header {
     border-radius: 50px;
     width: 100%;
 }
-
-.hero-section {
-    background: url("../Image/102728-56-1920x1080.jpg") 50% no-repeat;
-    background-size: cover;
-    height: 40vh;
-    text-align: center;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-}
-
-.hero-section .hero-section-text {
-    color: #fefefe;
-    text-shadow: 1px 1px 2px #0a0a0a;
-}
-
-.input-group-rounded {
-    padding: 2%
-}
-
-.input-group-rounded .input-group-field {
-    border-radius: 5000px 0 0 5000px;
-    padding-left: 1rem;
-}
-
-.input-group-rounded .input-group-button {
-    border-radius: 0 5000px 5000px 0;
-    font-size: 0.8rem;
-}
-
 
 
 .sidebar {
@@ -108,18 +68,9 @@ header {
 .destinationCard {
     font-size: 1rem;
     padding: 1.5rem;
-    /* background-color: #56524b; */
     margin: 10px;
     height: auto;
 }
-
-/* .destinationImage {
-    object-fit: cover;
-    margin-bottom: 0.5em;
-    height: 300px;
-    background-size: cover;
-    border-radius: 20px;
-} */
 
 .desti-weather {
     /* border-radius: 20px; */
@@ -146,7 +97,6 @@ header {
 
 .desti-route-button.clicked {
     background-color: rgba(1, 17, 4, 0.8);
-    /* Tinted button color on click */
 }
 
 
@@ -154,11 +104,6 @@ header {
     position: fixed;
     height: 60vh;
     left: 50vw;
-}
-
-#geocoder {
-    /* z-index: 1; */
-    /* margin: 20px; */
 }
 
 .mapboxgl-ctrl-geocoder {
@@ -171,10 +116,6 @@ header {
     max-width: none !important;
     border-radius: 10px !important;
 }
-
-
-
-/* carousel start */
 
 .overlay {
     position: absolute;
@@ -223,7 +164,7 @@ header {
 
 .hero-slider .carousel-cell .inner .title {
     font-family: "Montserrat", sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
     line-height: 1.2em;
     text-transform: uppercase;
     letter-spacing: 3px;
@@ -278,5 +219,3 @@ header {
     background: white;
     border: 0 solid white;
 }
-
-/* carousel end */
