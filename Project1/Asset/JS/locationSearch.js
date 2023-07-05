@@ -3,48 +3,48 @@
 
 //---------------- mapbox API -----------------
 
-const mapBoxToken = "pk.eyJ1IjoiaG9yYWNlaG91IiwiYSI6ImNsamgwMHVubzBlYnkzZnFnN3U4amZxbmgifQ.mxqdrB6-rH2nfiQ4LA7aug";
+// const mapBoxToken = "pk.eyJ1IjoiaG9yYWNlaG91IiwiYSI6ImNsamgwMHVubzBlYnkzZnFnN3U4amZxbmgifQ.mxqdrB6-rH2nfiQ4LA7aug";
 
 let destinationMap = document.getElementById("destinationMap");
 
-mapboxgl.accessToken = mapBoxToken;
+// mapboxgl.accessToken = mapBoxToken;
 
-const map = new mapboxgl.Map({
-    container: destinationMap, // container ID
-    // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-    style: 'mapbox://styles/mapbox/streets-v12', // style URL
-    // center: [-74.5, 40], // starting position [lng, lat]
-    center: [
-        151.216454,
-        -33.854816
-    ],
-    geometry: {
-        "type": "Point",
-        "coordinates": [
-            151.216454,
-            -33.854816
-        ]
-    },
-    zoom: 12 // starting zoom
-});
+// const map = new mapboxgl.Map({
+//     container: destinationMap, // container ID
+//     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+//     style: 'mapbox://styles/mapbox/streets-v12', // style URL
+//     // center: [-74.5, 40], // starting position [lng, lat]
+//     center: [
+//         151.216454,
+//         -33.854816
+//     ],
+//     geometry: {
+//         "type": "Point",
+//         "coordinates": [
+//             151.216454,
+//             -33.854816
+//         ]
+//     },
+//     zoom: 12 // starting zoom
+// });
 
-const geocoder = new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken,
-    types: 'country,region,place,postcode,locality,neighborhood',
-    mapboxgl: mapboxgl
-});
+// const geocoder = new MapboxGeocoder({
+//     accessToken: mapboxgl.accessToken,
+//     types: 'country,region,place,postcode,locality,neighborhood',
+//     mapboxgl: mapboxgl
+// });
 
 
-// Add geocoder result to container.
-geocoder.on('result', (event) => {
-    const data = event.result;
-    // display the image based on the search result
-    getDestinationImage(data.text);
+// // Add geocoder result to container.
+// geocoder.on('result', (event) => {
+//     const data = event.result;
+//     // display the image based on the search result
+//     getDestinationImage(data.text);
 
-    updateDataFromWeatherAPI(data.text);
+//     updateDataFromWeatherAPI(data.text);
 
-    map.center = data.center;
-});
+//     map.center = data.center;
+// });
 
 // Clear results container when search is cleared.
 // geocoder.on('clear', () => {
@@ -52,26 +52,26 @@ geocoder.on('result', (event) => {
 // });
 
 // link external geocoder to the map
-document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+// document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
-map.addControl(
-    new mapboxgl.GeolocateControl({
-        positionOptions: {
-            enableHighAccuracy: true
-        },
-        // When active the map will receive updates to the device's location as it changes.
-        trackUserLocation: true,
-        // Draw an arrow next to the location dot to indicate which direction the device is heading.
-        showUserHeading: true
-    })
-);
+// map.addControl(
+//     new mapboxgl.GeolocateControl({
+//         positionOptions: {
+//             enableHighAccuracy: true
+//         },
+//         // When active the map will receive updates to the device's location as it changes.
+//         trackUserLocation: true,
+//         // Draw an arrow next to the location dot to indicate which direction the device is heading.
+//         showUserHeading: true
+//     })
+// );
 
-map.addControl(
-    new MapboxDirections({
-        accessToken: mapboxgl.accessToken
-    }),
-    'top-left'
-);
+// map.addControl(
+//     new MapboxDirections({
+//         accessToken: mapboxgl.accessToken
+//     }),
+//     'top-left'
+// );
 
 
 
@@ -158,8 +158,4 @@ let getDestinationImage = (destination) => {
 let updateDataFromWeatherAPI = function (data) {
     console.log(`This searched location is ${data}`);
 }
-
-
-
-//---------------- Map API Shan-----------------
 
