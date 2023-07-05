@@ -41,7 +41,7 @@ geocoder.on('result', (event) => {
     // display the image based on the search result
     getDestinationImage(data.text);
 
-    // updateDataFromWeatherAPI(data.text);
+    updateDataFromWeatherAPI(data.text);
 
     map.center = data.center;
 });
@@ -133,6 +133,7 @@ let getDestinationImage = (destination) => {
                 response.json().then((data) => {
 
                     console.log(data);
+                    if (slides.length === 0) return; // added a warning that location does not have any related images
                     for (let i = 0; i < slides.length; i++) {
                         let url = data.results[i].urls.regular;
                         let alt_description = data.results[i].alt_description;
@@ -151,4 +152,14 @@ let getDestinationImage = (destination) => {
             alert('Unable to connect');
         });
 };
+
+
+//---------------- Weather API Edmond-----------------
+let updateDataFromWeatherAPI = function (data) {
+    console.log(`This searched location is ${data}`);
+}
+
+
+
+//---------------- Map API Shan-----------------
 
