@@ -1,4 +1,5 @@
 import { getDestinationImage } from './locationSearch.js';
+import { callWeatherApi } from './weatherAPI.js';
 
 
 const mapBoxToken = "pk.eyJ1IjoiaG9yYWNlaG91IiwiYSI6ImNsamgwMHVubzBlYnkzZnFnN3U4amZxbmgifQ.mxqdrB6-rH2nfiQ4LA7aug";
@@ -65,10 +66,11 @@ function setupMap(center) {
         const data = event.result;
         // display the image based on the search result
 
-        // // need to fix the issue by implement modules
+        // call getDestinationImage function from locationSearch.js to update the carousel images
         getDestinationImage(data.text);
 
-        // updateDataFromWeatherAPI(data.text);
+        // call callWeatherApi function from weatherAPI.js to update the weather data
+        callWeatherApi(data.text);
 
         map.center = data.center;
     });
