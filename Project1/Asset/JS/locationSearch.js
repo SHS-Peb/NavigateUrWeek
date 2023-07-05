@@ -141,7 +141,7 @@ let getDestinationImage = (destination) => {
                         slides[i].style.backgroundImage = `url(${url})`;
                         titles[i].textContent = alt_description;
                         // titles[i].textContent = "";
-                        console.log(url);
+                        // console.log(url);
                     }
                 });
             } else {
