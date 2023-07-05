@@ -1,3 +1,6 @@
+import { getDestinationImage } from './locationSearch.js';
+
+
 const mapBoxToken = "pk.eyJ1IjoiaG9yYWNlaG91IiwiYSI6ImNsamgwMHVubzBlYnkzZnFnN3U4amZxbmgifQ.mxqdrB6-rH2nfiQ4LA7aug";
 
 // Check if mapboxgl object is available
@@ -63,7 +66,7 @@ function setupMap(center) {
         // display the image based on the search result
 
         // // need to fix the issue by implement modules
-        // getDestinationImage(data.text);
+        getDestinationImage(data.text);
 
         // updateDataFromWeatherAPI(data.text);
 

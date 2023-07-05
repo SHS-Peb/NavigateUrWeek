@@ -121,7 +121,7 @@ const client_id = "g9ZK5ag6po5d9rJet7HIMBi2dJdI4GDcL2KoZyZDOyg";
 let page = "1";
 let per_page = "7";
 
-let getDestinationImage = (destination) => {
+export let getDestinationImage = (destination) => {
     let apiUrl = `https://api.unsplash.com/search/photos/?page=${page}&per_page=${per_page}&query=${destination}&client_id=${client_id}`;
     let slides = document.getElementsByClassName('carousel-cell');
     let titles = document.getElementsByClassName('title');
@@ -133,7 +133,7 @@ let getDestinationImage = (destination) => {
                 response.json().then((data) => {
 
                     console.log(data);
-                    if (slides.length === 0) return; // added a warning that location does not have any related images
+                    if (data.results[i] === 0) return; // added a warning that location does not have any related images
                     for (let i = 0; i < slides.length; i++) {
                         let url = data.results[i].urls.regular;
                         let alt_description = data.results[i].alt_description;
