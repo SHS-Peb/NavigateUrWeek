@@ -65,7 +65,7 @@ geocoder.on('result', (e) => {
 
     // display the image based on the search result
     getDestinationImage(data.text)
-
+    console.log(data.text)
     map.center = data.center;
     // console.log(e.result);
 });
