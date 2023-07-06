@@ -40,7 +40,7 @@ function displayWeather(data) {
 
 
 // a duplication of callApi but to be exported
-export function callWeatherApi(location) {
+function callWeatherApi(location) {
 
     console.log(`callWeatherApi called, ${location}`);
     // use the location arguement from the mapBox function, -- Horace commented
