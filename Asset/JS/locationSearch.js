@@ -106,6 +106,17 @@ let carousel = document.querySelector('[data-carousel]');
 let slides = document.getElementsByClassName('carousel-cell');
 let flkty = new Flickity(carousel, options);
 
+// create an empty searchHistory Object
+let searchHistory = {
+    questions: [],
+    questionIndex: 0,
+    result: 0,
+    name: "",
+};
+
+
+
+
 flkty.on('scroll', () => {
     // console.log(slides.length);
     flkty.slides.forEach((slide, i) => {
@@ -121,7 +132,7 @@ const client_id = "g9ZK5ag6po5d9rJet7HIMBi2dJdI4GDcL2KoZyZDOyg";
 let page = "1";
 let per_page = "7";
 
-export let getDestinationImage = (destination) => {
+const getDestinationImage = (destination) => {
     let apiUrl = `https://api.unsplash.com/search/photos/?page=${page}&per_page=${per_page}&query=${destination}&client_id=${client_id}`;
     let slides = document.getElementsByClassName('carousel-cell');
     let titles = document.getElementsByClassName('title');
@@ -133,7 +144,7 @@ export let getDestinationImage = (destination) => {
                 response.json().then((data) => {
 
                     console.log(data);
-                    if (data.results[i] === 0) return; // added a warning that location does not have any related images
+                    if (data.results.length === 0) return; // added a warning that location does not have any related images
                     for (let i = 0; i < slides.length; i++) {
                         let url = data.results[i].urls.regular;
                         let alt_description = data.results[i].alt_description;
@@ -152,10 +163,3 @@ export let getDestinationImage = (destination) => {
             alert('Unable to connect');
         });
 };
-
-
-//---------------- Weather API Edmond-----------------
-let updateDataFromWeatherAPI = function (data) {
-    console.log(`This searched location is ${data}`);
-}
-
