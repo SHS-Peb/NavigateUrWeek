@@ -219,3 +219,13 @@ header {
     background: white;
     border: 0 solid white;
 }
+
+.desti-weather {
+    /* background-color: rgb(158, 216, 250); */
+    text-align: center;
+}
+
+#forecast-list {
+    list-style: none;
+    text-align: left;
+}

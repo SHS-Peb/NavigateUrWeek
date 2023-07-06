@@ -17,6 +17,7 @@ if (typeof mapboxgl !== 'undefined') {
 // Geolocation success callback
 function successLocation(position) {
     const center = [position.coords.longitude, position.coords.latitude];
+    callForecast(position.coords.latitude + ',' + position.coords.longitude)
     setupMap(center);
     // saveCoordinatesToStorage(center);
 }
@@ -65,12 +66,12 @@ function setupMap(center) {
     geocoder.on('result', (event) => {
         const data = event.result;
         // display the image based on the search result
-
+        console.log(data.text)
         // call getDestinationImage function from locationSearch.js to update the carousel images
         getDestinationImage(data.text);
 
         // call callWeatherApi function from weatherAPI.js to update the weather data
-        callWeatherApi(data.text);
+        callForecast(data.text);
 
         map.center = data.center;
     });

@@ -1,50 +1,66 @@
+
+//Function to fetch weather data from API
 function callForecast(locationText) {
-    var baseURL = 'http://api.weatherapi.com/v1/forecast.json?';
-    var key = 'key=c5136b5d7b324af38a1103907232906';
+
     var searchLocation = locationText;
-    var finalURL;
+    var requestURL = 'http://api.weatherapi.com/v1/forecast.json?key=c5136b5d7b324af38a1103907232906&q=' + searchLocation + '&days=6';
 
-    searchLocation = 'Sydney'
-
-    finalURL = baseURL + key + '&q=' + searchLocation + '&days=5';
-
-    fetch(finalURL)
+    fetch(requestURL);
         .then(function (response) {
-            if (!response.ok) {
-                console.log("Error " + response.status)
-            }
-            return response.json();
-        })
+        if (!response.ok) {
+            console.log("Error " + response.status);
+        }
+        return response.json();
+    })
         .then((data) => {
-            console.log(data)
+            //console.log(data)
             this.displayWeather(data);
         })
 }
 
 
 function displayWeather(data) {
-    var weatherEl = document.getElementById('destination-weather');
-    var cityNameEl = document.createElement('p');
+    var degreeC = "&deg;C";
+    //Render todays weather data for location on screen
+    var cityNameEl = document.getElementById('cityName');
     cityNameEl.innerHTML = data.location.name + ", " + data.location.region + ", " + data.location.country;
-    // console.log(cityNameEl.innerHTML);
-    weatherEl.appendChild(cityNameEl);
-    var currentConditionEl = document.createElement('p');
+    var currentConditionEl = document.getElementById('currentCondition');
     currentConditionEl.innerHTML = data.current.condition.text;
-    weatherEl.appendChild(currentConditionEl);
-    var currentConditionImg = document.createElement('img');
-    var icon = 'https:' + data.current.condition.icon
-    console.log(icon)
-    currentConditionImg.setAttribute('src', icon)
-    currentConditionEl.appendChild(currentConditionImg)
-    var currentTempEl = document.createElement('p');
-    currentTempEl.innerHTML = "Current Temperature: " + data.current.temp_c;
-    // console.log(currentTempEl.innerHTML)
-    weatherEl.appendChild(currentTempEl)
+    var currentConditionImgEl = document.getElementById('currentConditionImg');
+    var icon = 'https:' + data.current.condition.icon;
+    currentConditionImgEl.setAttribute('src', icon);
+    var currentTempEl = document.getElementById('currentTemp');
+    currentTempEl.innerHTML = data.current.temp_c + degreeC;
+
+    //Render 5 day forecast for location on screen
+    for (var i = 1; i < data.forecast.forecastday.length; i++) {
+        var day;
+        var forecastDay = data.forecast.forecastday[i];
+        //console.log(forecastDay)
+        if (i = 1) {
+            day = "tmws"
+        } else if (i = 2) {
+            day = "twoDays"
+        } else if (i = 3) {
+            day = "threeDays"
+        } else if (i = 4) {
+            day = "fourDays"
+        } else {
+            day = "fiveDays"
+        };
+        var dateEl = document.getElementById(day + 'Date');
+        console.log(dateEl);
+        var CondImgEl = document.getElementById(day + 'CondImg');
+        var TempLowEl = document.getElementById(day + 'TempLow');
+        var TempHighEl = document.getElementById(day + 'TempHigh');
+        dateEl.innerHTML = forecastDay.date;
+        CondImgEl.setAttribute('src', 'http:' + forecastDay.day.condition.icon);
+        CondImgEl.setAttribute('alt', forecastDay.day.condition.text);
+        TempLowEl.innerHTML = forecastDay.day.mintemp_c;
+        TempHighEl.innerHTML = forecastDay.day.maxtemp_c;
+
+
+
+    }
 
 }
-
-
-var temporaryLocation = "Sydney"
-
-
-callForecast(temporaryLocation)
