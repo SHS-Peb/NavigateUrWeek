@@ -13,6 +13,7 @@ callApi(finalURL)
 
 
 function callApi(requestUrl) {
+
     fetch(requestUrl)
         .then(function (response) {
             if (!response.ok) {
@@ -35,4 +36,26 @@ function displayWeather(data) {
 
     var currentTempEl = document.createElement('div')
     currentTempEl.textContent = data.current.feelslike_c
+}
+
+
+// a duplication of callApi but to be exported
+export function callWeatherApi(location) {
+
+    console.log(`callWeatherApi called, ${location}`);
+    // use the location arguement from the mapBox function, -- Horace commented
+    finalURL = baseURL + forecast + key + '&q=' + location;
+
+    fetch(requestUrl)
+        .then(function (response) {
+            if (!response.ok) {
+                console.log("Error " + response.status)
+            }
+            console.log(response)
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data)
+            this.displayWeather(data);
+        })
 }
