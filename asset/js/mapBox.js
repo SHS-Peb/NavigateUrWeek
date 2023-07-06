@@ -66,7 +66,7 @@ function setupMap(center) {
     geocoder.on('result', (event) => {
         const data = event.result;
         // display the image based on the search result
-        console.log(data.text)
+        console.log(data)
         // call getDestinationImage function from locationSearch.js to update the carousel images
         getDestinationImage(data.text);
 

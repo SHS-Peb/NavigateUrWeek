@@ -227,5 +227,6 @@ header {
 
 #forecast-list {
     list-style: none;
-    text-align: left;
+    text-align: center;
+    display: block;
 }

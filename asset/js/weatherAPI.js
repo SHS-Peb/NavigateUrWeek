@@ -20,6 +20,7 @@ function callForecast(locationText) {
 
 
 function displayWeather(data) {
+    var spacer = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
     var day;
     var degreeC = "&deg;C";
     //Render todays weather data for location on screen
@@ -35,29 +36,39 @@ function displayWeather(data) {
 
     //Render 5 day forecast for location on screen
     for (var i = 1; i < data.forecast.forecastday.length; i++) {
+        var dateEl;
         var forecastDay = data.forecast.forecastday[i];
         console.log(forecastDay);
-        // if (i = 1) {
-        //     day = "tmws"
-        // } else if (i = 2) {
-        //     day = "twoDays"
-        // } else if (i = 3) {
-        //     day = "threeDays"
-        // } else if (i = 4) {
-        //     day = "fourDays"
-        // } else {
-        //     day = "fiveDays"
-        // }
-        // console.log(day)
-        // var dateEl = document.getElementById(day + 'Date');
-        // var CondImgEl = document.getElementById(day + 'CondImg');
-        // var TempLowEl = document.getElementById(day + 'TempLow');
-        // var TempHighEl = document.getElementById(day + 'TempHigh');
-        // dateEl.innerHTML = forecastDay.date;
-        // CondImgEl.setAttribute('src', 'http:' + forecastDay.day.condition.icon);
-        // CondImgEl.setAttribute('alt', forecastDay.day.condition.text);
-        // TempLowEl.innerHTML = forecastDay.day.mintemp_c + degreeC;
-        // TempHighEl.innerHTML = forecastDay.day.maxtemp_c + degreeC;
+        if (i === 1) {
+            day = "tmws";
+            dateEl = document.getElementById(day + 'Date')
+            dateEl.innerHTML = 'Tomorrow';
+        } else if (i === 2) {
+            day = "twoDays";
+            dateEl = document.getElementById(day + 'Date')
+            dateEl.innerHTML = forecastDay.date;
+        } else if (i === 3) {
+            day = "threeDays";
+            dateEl = document.getElementById(day + 'Date')
+            dateEl.innerHTML = forecastDay.date;
+        } else if (i === 4) {
+            day = "fourDays";
+            dateEl = document.getElementById(day + 'Date')
+            dateEl.innerHTML = forecastDay.date;
+        } else {
+            day = "fiveDays";
+            dateEl = document.getElementById(day + 'Date')
+            dateEl.innerHTML = forecastDay.date;
+        };
+        console.log(day);
+        var CondImgEl = document.getElementById(day + 'CondImg');
+        var TempLowEl = document.getElementById(day + 'TempLow');
+        var TempHighEl = document.getElementById(day + 'TempHigh');
+
+        CondImgEl.setAttribute('src', 'http:' + forecastDay.day.condition.icon);
+        CondImgEl.setAttribute('alt', forecastDay.day.condition.text);
+        TempLowEl.innerHTML = forecastDay.day.mintemp_c + degreeC + spacer;
+        TempHighEl.innerHTML = forecastDay.day.maxtemp_c + degreeC;
     }
 
 }
