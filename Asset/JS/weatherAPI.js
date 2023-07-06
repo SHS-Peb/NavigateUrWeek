@@ -1,11 +1,3 @@
-
-
-var temporaryLocation = "Sydney"
-
-
-callForecast(temporaryLocation)
-
-
 function callForecast(locationText) {
     var baseURL = 'http://api.weatherapi.com/v1/forecast.json?';
     var key = 'key=c5136b5d7b324af38a1103907232906';
@@ -39,14 +31,20 @@ function displayWeather(data) {
     var currentConditionEl = document.createElement('p');
     currentConditionEl.innerHTML = data.current.condition.text;
     weatherEl.appendChild(currentConditionEl);
-    // var currentConditionImg = document.createElement('img');
-    // var icon = data.current.condition.icon
-    // console.log(icon)
-    // currentConditionImg.setAttribute('src', icon)
-    // currentConditionEl.appendChild(currentConditionImg)
+    var currentConditionImg = document.createElement('img');
+    var icon = 'https:' + data.current.condition.icon
+    console.log(icon)
+    currentConditionImg.setAttribute('src', icon)
+    currentConditionEl.appendChild(currentConditionImg)
     var currentTempEl = document.createElement('p');
     currentTempEl.innerHTML = "Current Temperature: " + data.current.temp_c;
     // console.log(currentTempEl.innerHTML)
     weatherEl.appendChild(currentTempEl)
 
 }
+
+
+var temporaryLocation = "Sydney"
+
+
+callForecast(temporaryLocation)
