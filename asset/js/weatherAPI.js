@@ -5,6 +5,9 @@ function callForecast(locationText) {
     var searchLocation = locationText;
     var requestURL = 'http://api.weatherapi.com/v1/forecast.json?key=c5136b5d7b324af38a1103907232906&q=' + searchLocation + '&days=6';
 
+    console.log(searchLocation)
+    searchLocation.replace(' ', '')
+
     fetch(requestURL)
         .then(function (response) {
             if (!response.ok) {
@@ -13,7 +16,7 @@ function callForecast(locationText) {
             return response.json();
         })
         .then((data) => {
-            //console.log(data)
+            console.log(data)
             this.displayWeather(data);
         })
 }
@@ -38,7 +41,7 @@ function displayWeather(data) {
     for (var i = 1; i < data.forecast.forecastday.length; i++) {
         var dateEl;
         var forecastDay = data.forecast.forecastday[i];
-        console.log(forecastDay);
+        //console.log(forecastDay);
         if (i === 1) {
             day = "tmws";
             dateEl = document.getElementById(day + 'Date')
@@ -60,7 +63,7 @@ function displayWeather(data) {
             dateEl = document.getElementById(day + 'Date')
             dateEl.innerHTML = forecastDay.date;
         };
-        console.log(day);
+        //console.log(day);
         var CondImgEl = document.getElementById(day + 'CondImg');
         var TempLowEl = document.getElementById(day + 'TempLow');
         var TempHighEl = document.getElementById(day + 'TempHigh');

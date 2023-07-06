@@ -70,8 +70,13 @@ function setupMap(center) {
         // call getDestinationImage function from locationSearch.js to update the carousel images
         getDestinationImage(data.text);
 
-        // call callWeatherApi function from weatherAPI.js to update the weather data
-        callForecast(data.text);
+        // call callWeatherApi function from weatherAPI.js to update the weather data using city name
+        //callForecast(data.text);
+
+        //call callWeatherApi function from weatherAPI.js to update the weather data using coordinates
+        var destinationCoords = data.center[1] + "," + data.center[0]
+        console.log(destinationCoords)
+        callForecast(destinationCoords);
 
         map.center = data.center;
     });
