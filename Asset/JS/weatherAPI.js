@@ -1,25 +1,26 @@
-var baseURL = 'http://api.weatherapi.com/v1/';
-var forecast = 'forecast.json?';
-var current = 'current.json?';
-var key = 'key=c5136b5d7b324af38a1103907232906';
-var searchLocation;
-var finalURL;
-
-searchLocation = "Sydney"
-
-finalURL = baseURL + forecast + key + '&q=' + searchLocation;
-
-callApi(finalURL)
 
 
-function callApi(requestUrl) {
+var temporaryLocation = "Sydney"
 
-    fetch(requestUrl)
+
+callForecast(temporaryLocation)
+
+
+function callForecast(locationText) {
+    var baseURL = 'http://api.weatherapi.com/v1/forecast.json?';
+    var key = 'key=c5136b5d7b324af38a1103907232906';
+    var searchLocation = locationText;
+    var finalURL;
+
+    searchLocation = 'Sydney'
+
+    finalURL = baseURL + key + '&q=' + searchLocation + '&days=5';
+
+    fetch(finalURL)
         .then(function (response) {
             if (!response.ok) {
                 console.log("Error " + response.status)
             }
-            console.log(response)
             return response.json();
         })
         .then((data) => {
@@ -30,10 +31,22 @@ function callApi(requestUrl) {
 
 
 function displayWeather(data) {
-    var weatherEl = document.getElementsByClassName('desti-weather')
-    var cityNameEl = document.createElement('div')
-    cityNameEl.textContent = data.location.name + ", " + data.location.region + ", " + data.location.country
+    var weatherEl = document.getElementById('destination-weather');
+    var cityNameEl = document.createElement('p');
+    cityNameEl.innerHTML = data.location.name + ", " + data.location.region + ", " + data.location.country;
+    // console.log(cityNameEl.innerHTML);
+    weatherEl.appendChild(cityNameEl);
+    var currentConditionEl = document.createElement('p');
+    currentConditionEl.innerHTML = data.current.condition.text;
+    weatherEl.appendChild(currentConditionEl);
+    // var currentConditionImg = document.createElement('img');
+    // var icon = data.current.condition.icon
+    // console.log(icon)
+    // currentConditionImg.setAttribute('src', icon)
+    // currentConditionEl.appendChild(currentConditionImg)
+    var currentTempEl = document.createElement('p');
+    currentTempEl.innerHTML = "Current Temperature: " + data.current.temp_c;
+    // console.log(currentTempEl.innerHTML)
+    weatherEl.appendChild(currentTempEl)
 
-    var currentTempEl = document.createElement('div')
-    currentTempEl.textContent = data.current.feelslike_c
 }
