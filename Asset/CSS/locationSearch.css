@@ -5,7 +5,7 @@
 }
 
 body {
-    min-width: 450px;
+    min-width: 600px;
     font-family: sans-serif;
 
 }
@@ -16,8 +16,8 @@ header {
 
 .webTitle {
     position: absolute;
-    top: 15%;
-    left: 42%;
+    top: 10px;
+    left: 30px;
     font-family: "Roboto Slab", serif;
     font-size: 2.5rem;
     line-height: 1.2em;
