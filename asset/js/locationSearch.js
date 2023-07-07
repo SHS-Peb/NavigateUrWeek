@@ -1,7 +1,6 @@
 let destinationMap = document.getElementById("destinationMap");
 let geocoderResetButton = document.getElementById("geocoderResetButton");
 
-
 //---------------- UI -----------------
 
 
@@ -50,7 +49,7 @@ flkty.on('scroll', () => {
 
 //---------------- UI events -----------------
 // create an empty searchHistory Object
-let searchHistory;
+let searchHistory = [];
 
 geocoderResetButton.addEventListener("click", (event) => {
     console.log("click");
@@ -87,8 +86,16 @@ const getDestinationImage = (destination) => {
                     // return if there is no search result
                     if (data.results.length === 0) { return; } // added a warning that location does not have any related images
                     else {
-                        searchHistory.push({ locationName: destination, url: data.results[0].urls.regular, description: data.results[0].alt_description });
-                        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+                        console.log(typeof searchHistory);
+
+                        // avoid repeat destination data in the localStorage
+                        let hasDestination = searchHistory.some(function (history) {
+                            return history.locationName === destination;
+                        });
+                        if (!hasDestination) {
+                            searchHistory.push({ locationName: destination, url: data.results[0].urls.regular, description: data.results[0].alt_description });
+                            localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+                        }
                     }
 
                     for (let i = 0; i < slides.length; i++) {
@@ -108,12 +115,21 @@ const getDestinationImage = (destination) => {
         });
 };
 
+
+//---------------- init -----------------
+
+let siteLocation = "";
 const init = () => {
     searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
-    if (!searchHistory) {
-        searchHistory = [];
+
+    const searchParams = new URLSearchParams(window.location.search);
+    siteLocation = searchParams.get("data");
+
+    // geocoder.query(siteLocation);
+    if (siteLocation) {
+        getDestinationImage(siteLocation);
     }
-    console.log(searchHistory);
+
 }
 
 
