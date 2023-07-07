@@ -1,5 +1,6 @@
 let destinationMap = document.getElementById("destinationMap");
 let geocoderResetButton = document.getElementById("geocoderResetButton");
+let webTitle = document.getElementById("webTitle");
 
 //---------------- UI -----------------
 
@@ -9,13 +10,18 @@ let geocoderResetButton = document.getElementById("geocoderResetButton");
 let button = document.querySelector('.desti-route-button');
 
 // reset localStorage 
-button.addEventListener('click', (event) => {
-    button.classList.add('clicked');
-    setTimeout(function () {
-        button.classList.remove('clicked');
-    }, 200);
+// button.addEventListener('click', (event) => {
+//     button.classList.add('clicked');
+//     setTimeout(function () {
+//         button.classList.remove('clicked');
+//     }, 200);
 
-});
+// });
+
+webTitle.addEventListener('click', (event) => {
+    window.location.href = "../../index.html";
+    console.log("click");
+})
 
 // carousel
 let carousel = document.querySelector('[data-carousel]');
