@@ -1,92 +1,31 @@
-// import { updateDataFromWeatherAPI } from './weatherAPI.js';
-
-
-//---------------- mapbox API -----------------
-
-// const mapBoxToken = "pk.eyJ1IjoiaG9yYWNlaG91IiwiYSI6ImNsamgwMHVubzBlYnkzZnFnN3U4amZxbmgifQ.mxqdrB6-rH2nfiQ4LA7aug";
-
 let destinationMap = document.getElementById("destinationMap");
-
-// mapboxgl.accessToken = mapBoxToken;
-
-// const map = new mapboxgl.Map({
-//     container: destinationMap, // container ID
-//     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-//     style: 'mapbox://styles/mapbox/streets-v12', // style URL
-//     // center: [-74.5, 40], // starting position [lng, lat]
-//     center: [
-//         151.216454,
-//         -33.854816
-//     ],
-//     geometry: {
-//         "type": "Point",
-//         "coordinates": [
-//             151.216454,
-//             -33.854816
-//         ]
-//     },
-//     zoom: 12 // starting zoom
-// });
-
-// const geocoder = new MapboxGeocoder({
-//     accessToken: mapboxgl.accessToken,
-//     types: 'country,region,place,postcode,locality,neighborhood',
-//     mapboxgl: mapboxgl
-// });
-
-
-// // Add geocoder result to container.
-// geocoder.on('result', (event) => {
-//     const data = event.result;
-//     // display the image based on the search result
-//     getDestinationImage(data.text);
-
-//     updateDataFromWeatherAPI(data.text);
-
-//     map.center = data.center;
-// });
-
-// Clear results container when search is cleared.
-// geocoder.on('clear', () => {
-//     results.innerText = '';
-// });
-
-// link external geocoder to the map
-// document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-
-// map.addControl(
-//     new mapboxgl.GeolocateControl({
-//         positionOptions: {
-//             enableHighAccuracy: true
-//         },
-//         // When active the map will receive updates to the device's location as it changes.
-//         trackUserLocation: true,
-//         // Draw an arrow next to the location dot to indicate which direction the device is heading.
-//         showUserHeading: true
-//     })
-// );
-
-// map.addControl(
-//     new MapboxDirections({
-//         accessToken: mapboxgl.accessToken
-//     }),
-//     'top-left'
-// );
-
-
+let geocoderResetButton = document.getElementById("geocoderResetButton");
+let webTitle = document.getElementById("webTitle");
 
 //---------------- UI -----------------
 
-var button = document.querySelector('.desti-route-button');
-
-button.addEventListener('click', () => {
-    button.classList.add('clicked');
-    setTimeout(function () {
-        button.classList.remove('clicked');
-    }, 200);
-});
 
 
+
+let button = document.querySelector('.desti-route-button');
+
+// reset localStorage 
+// button.addEventListener('click', (event) => {
+//     button.classList.add('clicked');
+//     setTimeout(function () {
+//         button.classList.remove('clicked');
+//     }, 200);
+
+// });
+
+webTitle.addEventListener('click', (event) => {
+    window.location.href = "../../index.html";
+    console.log("click");
+})
+
+// carousel
+let carousel = document.querySelector('[data-carousel]');
+let slides = document.getElementsByClassName('carousel-cell');
 let options = {
     accessibility: true,
     prevNextButtons: true,
@@ -102,20 +41,7 @@ let options = {
     }
 };
 
-let carousel = document.querySelector('[data-carousel]');
-let slides = document.getElementsByClassName('carousel-cell');
 let flkty = new Flickity(carousel, options);
-
-// create an empty searchHistory Object
-let searchHistory = {
-    questions: [],
-    questionIndex: 0,
-    result: 0,
-    name: "",
-};
-
-
-
 
 flkty.on('scroll', () => {
     // console.log(slides.length);
@@ -125,6 +51,24 @@ flkty.on('scroll', () => {
         image.style.backgroundPosition = x + 'px';
     });
 });
+
+
+//---------------- UI events -----------------
+// create an empty searchHistory Object
+let searchHistory = [];
+
+geocoderResetButton.addEventListener("click", (event) => {
+    console.log("click");
+
+    geocoderResetButton.classList.add('clicked');
+    setTimeout(function () {
+        button.classList.remove('clicked');
+    }, 200);
+    searchHistory = [];
+
+    localStorage.setItem("searchHistory", "");
+})
+
 
 
 //---------------- Unsplash API-----------------
@@ -144,15 +88,28 @@ const getDestinationImage = (destination) => {
                 response.json().then((data) => {
 
                     console.log(data);
-                    if (data.results.length === 0) return; // added a warning that location does not have any related images
+
+                    // return if there is no search result
+                    if (data.results.length === 0) { return; } // added a warning that location does not have any related images
+                    else {
+                        console.log(typeof searchHistory);
+
+                        // avoid repeat destination data in the localStorage
+                        let hasDestination = searchHistory.some(function (history) {
+                            return history.locationName === destination;
+                        });
+                        if (!hasDestination) {
+                            searchHistory.push({ locationName: destination, url: data.results[0].urls.regular, description: data.results[0].alt_description });
+                            localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+                        }
+                    }
+
                     for (let i = 0; i < slides.length; i++) {
                         let url = data.results[i].urls.regular;
                         let alt_description = data.results[i].alt_description;
 
                         slides[i].style.backgroundImage = `url(${url})`;
                         titles[i].textContent = alt_description;
-                        // titles[i].textContent = "";
-                        // console.log(url);
                     }
                 });
             } else {
@@ -163,3 +120,23 @@ const getDestinationImage = (destination) => {
             alert('Unable to connect');
         });
 };
+
+
+//---------------- init -----------------
+
+let siteLocation = "";
+const init = () => {
+    searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+
+    const searchParams = new URLSearchParams(window.location.search);
+    siteLocation = searchParams.get("data");
+
+    // geocoder.query(siteLocation);
+    if (siteLocation) {
+        getDestinationImage(siteLocation);
+    }
+
+}
+
+
+init();

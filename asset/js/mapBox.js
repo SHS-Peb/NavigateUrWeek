@@ -17,6 +17,7 @@ if (typeof mapboxgl !== 'undefined') {
 // Geolocation success callback
 function successLocation(position) {
     const center = [position.coords.longitude, position.coords.latitude];
+    callForecast(position.coords.latitude + ',' + position.coords.longitude)
     setupMap(center);
     // saveCoordinatesToStorage(center);
 }
@@ -60,18 +61,23 @@ function setupMap(center) {
     });
     document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
-
     // Add geocoder result to container.
     geocoder.on('result', (event) => {
         const data = event.result;
         // display the image based on the search result
-
+        console.log(data)
         // call getDestinationImage function from locationSearch.js to update the carousel images
         getDestinationImage(data.text);
 
-        // call callWeatherApi function from weatherAPI.js to update the weather data
-        callWeatherApi(data.text);
+        // call callWeatherApi function from weatherAPI.js to update the weather data using city name
+        callForecast(data.text);
+
+        //call callWeatherApi function from weatherAPI.js to update the weather data using coordinates
+        // var destinationCoords = data.center[1] + "," + data.center[0]
+        // console.log(destinationCoords)
+        // callForecast(destinationCoords);
 
         map.center = data.center;
     });
+
 }
