@@ -61,7 +61,6 @@ function setupMap(center) {
     });
     document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
-
     // Add geocoder result to container.
     geocoder.on('result', (event) => {
         const data = event.result;
@@ -80,4 +79,5 @@ function setupMap(center) {
 
         map.center = data.center;
     });
+
 }
