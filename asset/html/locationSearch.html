@@ -105,7 +105,35 @@
                         <!-- <img id="destinationImage" class="small-12 medium-12 large-12 destinationImage" alt="img"
                             src="../Image/102728-56-1920x1080.jpg" /> -->
 
-                        <div class="small-12 medium-12 large-12 desti-weather">Weather Data</div>
+                        <div class="small-12 medium-12 large-12 desti-weather">
+                            <div>
+                                <h3>Today's Weather</h3>
+                                <h4 id="cityName"></h4>
+                                <p><span id="currentCondition"></span><img id="currentConditionImg" src="" alt=""></p>
+                                <p>Current Temperature: <span id="currentTemp"></span></p>
+                            </div>
+                            <div>
+                                <h3>5 Day Forecast</h3>
+                                <ul id="forecast-list">
+                                    <li id="tomorrow"><span id="tmwsDate"></span><img id="tmwsCondImg" src=""
+                                            alt=""><span id="tmwsTempLow"></span><span id="tmwsTempHigh"></span>
+                                    </li>
+                                    <li id="twoDays"><span id="twoDaysDate"></span><img id="twoDaysCondImg" src=""
+                                            alt=""><span id="twoDaysTempLow"></span><span id="twoDaysTempHigh"></span>
+                                    </li>
+                                    <li id="threeDays"><span id="threeDaysDate"></span><img id="threeDaysCondImg" src=""
+                                            alt=""><span id="threeDaysTempLow"></span><span
+                                            id="threeDaysTempHigh"></span></li>
+                                    <li id="fourDays"><span id="fourDaysDate"></span><img id="fourDaysCondImg" src=""
+                                            alt=""><span id="fourDaysTempLow"></span><span id="fourDaysTempHigh"></span>
+                                    </li>
+                                    <li id="fiveDays"><span id="fiveDaysDate"></span><img id="fiveDaysCondImg" src=""
+                                            alt=""><span id="fiveDaysTempLow"></span><span id="fiveDaysTempHigh"></span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
                         <!-- <button class="small-12 medium-6 large-6 desti-route-button">Search Route</button> -->
 
                     </div>
