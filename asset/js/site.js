@@ -18,6 +18,7 @@ const loadSearchHistoryToHomePage = () => {
             item.addEventListener("click", (event) => {
                 let itemHeader = item.querySelector("h4");
                 let url = "./asset/html/locationSearch.html?data=" + itemHeader.textContent.trimEnd();
+                console.log(url)
 
                 window.location.href = url;
 
