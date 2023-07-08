@@ -35,6 +35,7 @@
 <body>
 
     <header>
+
         <div class="hero-slider" data-carousel>
             <div class="carousel-cell"
                 style="background-image:url(https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0Njk5ODF8MHwxfHNlYXJjaHwxfHxTeWRuZXl8ZW58MHx8fHwxNjg4NDYxNzk4fDA&ixlib=rb-4.0.3&q=80&w=1080);">
@@ -86,10 +87,12 @@
                 </div>
             </div>
         </div>
-        <h2 class="webTitle">NavigateUrWeek</h2>
+        <h2 id="webTitle" class="webTitle">NavigateUrWeek</h2>
 
         <div class="geocoderContainer">
-            <div id="geocoder" class="geocoderInput" style="width: 100%;"></div>
+            <div id="geocoder" class="geocoderInput"></div>
+            <button id="geocoderResetButton" class="geocoderResetButton button secondary">Reset</button>
+
         </div>
     </header>
 
@@ -103,7 +106,7 @@
                             src="../Image/102728-56-1920x1080.jpg" /> -->
 
                         <div class="small-12 medium-12 large-12 desti-weather">Weather Data</div>
-                        <button class="small-12 medium-6 large-6 desti-route-button">Search Route</button>
+                        <!-- <button class="small-12 medium-6 large-6 desti-route-button">Search Route</button> -->
 
                     </div>
 
