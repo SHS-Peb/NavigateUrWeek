@@ -2,18 +2,19 @@
 // Function to fetch current weather data from API
 function callWeather(locationText) {
     var searchLocation = locationText;
-    var requestURL = 'http://api.weatherapi.com/v1/current.json?key=c5136b5d7b324af38a1103907232906&q=' + searchLocation;
+    var requestURL = 'http://api.weatherapi.com/v1/current.json?key=c5136b5d7b324af38a1103907232906&q=' + searchLocation + '&aqi=no';
 
     fetch(requestURL)
         .then(function (response) {
             if (!response.ok) {
                 console.log("Error " + response.status);
             }
-            return response.json();
+            // return response.json();
         })
         .then((data) => {
             console.log(data)
             this.displayWeather(data);
+            return data;
         })
 }
 

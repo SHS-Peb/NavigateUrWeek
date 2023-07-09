@@ -2,7 +2,6 @@ let searchHistory;
 
 const loadSearchHistoryToHomePage = () => {
     let history = document.getElementById("history");
-
     if (searchHistory.length === 0) return;
     if (!history) return;
 
@@ -30,7 +29,19 @@ const loadSearchHistoryToHomePage = () => {
     }
 }
 
+function loadWeather() {
+    var locationCardEl = document.getElementsByClassName("portfolio-item");
+    console.log(locationCardEl)
+    for (let i = 0; i < locationCardEl.length; i++) {
+        var currentCard = locationCardEl[i]
+        console.log(currentCard)
+        var currentLocation = currentCard.querySelector('h4')
+        console.log(currentLocation.innerHTML)
+        var currentWeather = callWeather(currentLocation.innerHTML)
 
+
+    }
+}
 
 
 
@@ -43,6 +54,7 @@ const init = () => {
     console.log(searchHistory);
 
     loadSearchHistoryToHomePage();
+    loadWeather();
 }
 
 
