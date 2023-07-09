@@ -7,7 +7,7 @@ const loadSearchHistoryToHomePage = () => {
 
     // added search history
     for (let i = searchHistory.length - 1; i >= 0; i--) {
-        let str = `<div class="portfolio-item"><img src="${searchHistory[i].url}" alt="${searchHistory[i].description}" class="thumbnail" height="100" width="100"><h4>${searchHistory[i].locationName}</h4><p><img class="currentConditionIcon" src="" alt=""><span class="currentWeather"></span>${searchHistory[i].description}</p></div>`;
+        let str = `<div class="portfolio-item"><img src="${searchHistory[i].url}" alt="${searchHistory[i].description}" class="thumbnail" height="100" width="100"><h4>${searchHistory[i].locationName}</h4><p><img class="currentConditionIcon" src="" alt=""><span class="currentWeather"></span></p></div>`;
         history.innerHTML += str;
     }
 

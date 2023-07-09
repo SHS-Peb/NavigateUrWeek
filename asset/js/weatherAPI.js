@@ -18,13 +18,14 @@ function callWeather(locationText, currentCard) {
 }
 
 function displayWeather(data, currentCard) {
+    var degreeC = "&deg;C"
     console.log(data);
     console.log(currentCard);
     //Assigning variables to html elements
     tempEl = currentCard.querySelector('.currentWeather');
     conditionImgEl = currentCard.querySelector('.currentConditionIcon');
     icon = 'http:' + data.current.condition.icon;
-    tempEl.innerHTML = data.current.temp_c;
+    tempEl.innerHTML = "Current Temperature: " + data.current.temp_c + degreeC;
     conditionImgEl.setAttribute('src', icon);
     conditionImgEl.setAttribute('alt', data.current.condition.text)
 }
