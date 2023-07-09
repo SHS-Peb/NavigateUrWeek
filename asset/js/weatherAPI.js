@@ -1,6 +1,6 @@
 
 // Function to fetch current weather data from API
-function callWeather(locationText) {
+function callWeather(locationText, currentCard) {
     var searchLocation = locationText;
     var requestURL = 'http://api.weatherapi.com/v1/current.json?key=c5136b5d7b324af38a1103907232906&q=' + searchLocation + '&aqi=no';
 
@@ -9,19 +9,25 @@ function callWeather(locationText) {
             if (!response.ok) {
                 console.log("Error " + response.status);
             }
-            // return response.json();
+            return response.json();
         })
         .then((data) => {
-            console.log(data)
-            this.displayWeather(data);
-            return data;
+            //console.log(data)
+            this.displayWeather(data, currentCard);
         })
 }
 
-function displayWeather(data) {
-
+function displayWeather(data, currentCard) {
+    console.log(data);
+    console.log(currentCard);
+    //Assigning variables to html elements
+    tempEl = currentCard.querySelector('.currentWeather');
+    conditionImgEl = currentCard.querySelector('.currentConditionIcon');
+    icon = 'http:' + data.current.condition.icon;
+    tempEl.innerHTML = data.current.temp_c;
+    conditionImgEl.setAttribute('src', icon);
+    conditionImgEl.setAttribute('alt', data.current.condition.text)
 }
-
 
 
 //Function to fetch weather forecast data, for the location provided by the MapBoxAPI, from the WeatherAPI

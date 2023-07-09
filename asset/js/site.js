@@ -7,7 +7,7 @@ const loadSearchHistoryToHomePage = () => {
 
     // added search history
     for (let i = searchHistory.length - 1; i >= 0; i--) {
-        let str = `<div class="portfolio-item"><img src="${searchHistory[i].url}" alt="${searchHistory[i].description}" class="thumbnail" height="100" width="100"><h4>${searchHistory[i].locationName}</h4><p>${searchHistory[i].description}</p></div>`;
+        let str = `<div class="portfolio-item"><img src="${searchHistory[i].url}" alt="${searchHistory[i].description}" class="thumbnail" height="100" width="100"><h4>${searchHistory[i].locationName}</h4><p><img class="currentConditionIcon" src="" alt=""><span class="currentWeather"></span>${searchHistory[i].description}</p></div>`;
         history.innerHTML += str;
     }
 
@@ -31,13 +31,14 @@ const loadSearchHistoryToHomePage = () => {
 
 function loadWeather() {
     var locationCardEl = document.getElementsByClassName("portfolio-item");
-    console.log(locationCardEl)
+    //console.log(locationCardEl)
     for (let i = 0; i < locationCardEl.length; i++) {
         var currentCard = locationCardEl[i]
-        console.log(currentCard)
+        //console.log(currentCard)
         var currentLocation = currentCard.querySelector('h4')
-        console.log(currentLocation.innerHTML)
-        var currentWeather = callWeather(currentLocation.innerHTML)
+        //console.log(currentLocation.innerHTML)
+        callWeather(currentLocation.innerHTML, currentCard)
+
 
 
     }
