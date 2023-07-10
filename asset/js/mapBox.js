@@ -72,6 +72,8 @@ function setupMap(center) {
         // call callWeatherApi function from weatherAPI.js to update the weather data using city name
         callForecast(data.text);
 
+
+        // Currently not used code but may be needed for future update.
         //call callWeatherApi function from weatherAPI.js to update the weather data using coordinates
         // var destinationCoords = data.center[1] + "," + data.center[0]
         // console.log(destinationCoords)

@@ -10,8 +10,11 @@ const loadSearchHistoryToHomePage = () => {
         let str = `<div class="portfolio-item"><img src="${searchHistory[i].url}" alt="${searchHistory[i].description}" class="thumbnail" height="100" width="100"><h4>${searchHistory[i].locationName}</h4><p><img class="currentConditionIcon" src="" alt=""><span class="currentWeather"></span></p></div>`;
         history.innerHTML += str;
     }
+}
 
-    // attach event listeners onto the history items
+
+// attach event listeners onto the history items
+function createEventListeners() {
     let items = document.querySelectorAll(".portfolio-item");
     if (items) {
 
@@ -28,6 +31,7 @@ const loadSearchHistoryToHomePage = () => {
         });
     }
 }
+
 
 function loadWeather() {
     var locationCardEl = document.getElementsByClassName("portfolio-item");
@@ -55,6 +59,7 @@ const init = () => {
     console.log(searchHistory);
 
     loadSearchHistoryToHomePage();
+    createEventListeners();
     loadWeather();
 }
 
