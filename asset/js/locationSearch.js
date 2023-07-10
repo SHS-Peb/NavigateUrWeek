@@ -4,23 +4,11 @@ let webTitle = document.getElementById("webTitle");
 
 //---------------- UI -----------------
 
-
-
-
 let button = document.querySelector('.desti-route-button');
 
-// reset localStorage 
-// button.addEventListener('click', (event) => {
-//     button.classList.add('clicked');
-//     setTimeout(function () {
-//         button.classList.remove('clicked');
-//     }, 200);
-
-// });
-
+// return to the home page upon click
 webTitle.addEventListener('click', (event) => {
     window.location.href = "../../index.html";
-    console.log("click");
 })
 
 // carousel
@@ -41,10 +29,11 @@ let options = {
     }
 };
 
+
+// carousel function
 let flkty = new Flickity(carousel, options);
 
 flkty.on('scroll', () => {
-    // console.log(slides.length);
     flkty.slides.forEach((slide, i) => {
         let image = slides[i];
         let x = (slide.target + flkty.x) * -1 / 3;
@@ -58,11 +47,10 @@ flkty.on('scroll', () => {
 let searchHistory = [];
 
 geocoderResetButton.addEventListener("click", (event) => {
-    console.log("click");
 
     geocoderResetButton.classList.add('clicked');
     setTimeout(function () {
-        button.classList.remove('clicked');
+        geocoderResetButton.classList.remove('clicked');
     }, 200);
     searchHistory = [];
 
@@ -76,6 +64,8 @@ const client_id = "g9ZK5ag6po5d9rJet7HIMBi2dJdI4GDcL2KoZyZDOyg";
 let page = "1";
 let per_page = "7";
 
+
+// get the image urls and load to the carousel using unsplash API
 const getDestinationImage = (destination) => {
     let apiUrl = `https://api.unsplash.com/search/photos/?page=${page}&per_page=${per_page}&query=${destination}&client_id=${client_id}`;
     let slides = document.getElementsByClassName('carousel-cell');
@@ -87,12 +77,10 @@ const getDestinationImage = (destination) => {
 
                 response.json().then((data) => {
 
-                    console.log(data);
 
                     // return if there is no search result
                     if (data.results.length === 0) { return; } // added a warning that location does not have any related images
                     else {
-                        console.log(typeof searchHistory);
 
                         // avoid repeat destination data in the localStorage
                         let hasDestination = searchHistory.some(function (history) {
@@ -126,12 +114,20 @@ const getDestinationImage = (destination) => {
 
 let siteLocation = "";
 const init = () => {
-    searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
 
+    // get the local search history
+    searchHistory = localStorage.getItem("searchHistory");
+
+    if (!searchHistory) {
+        searchHistory = [];
+    } else {
+        searchHistory = JSON.parse(searchHistory);
+    }
+
+    // get the data from the URL
     const searchParams = new URLSearchParams(window.location.search);
     siteLocation = searchParams.get("data");
 
-    // geocoder.query(siteLocation);
     if (siteLocation) {
         getDestinationImage(siteLocation);
     }

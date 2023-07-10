@@ -23,7 +23,6 @@ function createEventListeners() {
             item.addEventListener("click", (event) => {
                 let itemHeader = item.querySelector("h4");
                 let url = "./asset/html/locationSearch.html?data=" + itemHeader.textContent.trimEnd();
-                console.log(url);
 
                 window.location.href = url;
 
@@ -35,13 +34,10 @@ function createEventListeners() {
 // Load Weather data for all location cards
 function loadWeather() {
     var locationCardEl = document.getElementsByClassName("portfolio-item");
-    //console.log(locationCardEl)
     // Looping through each card element and getting the name of the location and giving it to the weatherapi to get weather data
     for (let i = 0; i < locationCardEl.length; i++) {
         var currentCard = locationCardEl[i];
-        //console.log(currentCard)
         var currentLocation = currentCard.querySelector('h4');
-        //console.log(currentLocation.innerHTML)
         callWeather(currentLocation.innerHTML, currentCard);
 
 
@@ -54,11 +50,13 @@ function loadWeather() {
 //---------------- init -----------------
 const init = () => {
     //Checking local storage for search history and saving it to searchHistory variable.
-    searchHistory = JSON.parse(localStorage.getItem("searchHistory"));
+    searchHistory = localStorage.getItem("searchHistory");
+
     if (!searchHistory) {
         searchHistory = [];
+    } else {
+        searchHistory = JSON.parse(searchHistory);
     }
-    // console.log(searchHistory);
 
     loadSearchHistoryToHomePage();
     createEventListeners();

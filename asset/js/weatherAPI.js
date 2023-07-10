@@ -1,4 +1,3 @@
-
 // Function to fetch current weather data from API
 function callWeather(locationText, currentCard) {
     var searchLocation = locationText;
@@ -12,20 +11,18 @@ function callWeather(locationText, currentCard) {
             return response.json();
         })
         .then((data) => {
-            //console.log(data)
             this.displayWeather(data, currentCard);
         })
 }
 
 function displayWeather(data, currentCard) {
     var degreeC = "&deg;C"
-    // console.log(data);
-    // console.log(currentCard);
 
     //Assigning variables to html elements
     tempEl = currentCard.querySelector('.currentWeather');
     conditionImgEl = currentCard.querySelector('.currentConditionIcon');
     icon = 'https:' + data.current.condition.icon;
+
     // Rendering weather data into html elements.
     tempEl.innerHTML = "Current Temperature: " + data.current.temp_c + degreeC;
     conditionImgEl.setAttribute('src', icon);
@@ -37,9 +34,8 @@ function displayWeather(data, currentCard) {
 function callForecast(locationText) {
 
     var searchLocation = locationText;
-    // console.log(searchLocation)
+
     var requestURL = 'https://api.weatherapi.com/v1/forecast.json?key=c5136b5d7b324af38a1103907232906&q=' + searchLocation + '&days=6';
-    // console.log(requestURL)
 
     fetch(requestURL)
         .then(function (response) {
@@ -49,7 +45,6 @@ function callForecast(locationText) {
             return response.json();
         })
         .then((data) => {
-            console.log(data)
             this.displayForecast(data);
         })
 }
@@ -79,7 +74,6 @@ function displayForecast(forecastData) {
         var day;
         var dateEl;
         var forecastDay = forecastData.forecast.forecastday[i];
-        //console.log(forecastDay);
 
         //Changes varible day depending on i
         if (i === 1) {
@@ -102,7 +96,7 @@ function displayForecast(forecastData) {
             dateEl = document.getElementById(day + 'Date')
             dateEl.innerHTML = forecastDay.date;
         }
-        //console.log(day);
+
         //Assigning varibles to html elements that will be changed
         var CondImgEl = document.getElementById(day + 'CondImg');
         var TempLowEl = document.getElementById(day + 'TempLow');
