@@ -19,12 +19,14 @@ function callWeather(locationText, currentCard) {
 
 function displayWeather(data, currentCard) {
     var degreeC = "&deg;C"
-    console.log(data);
-    console.log(currentCard);
+    // console.log(data);
+    // console.log(currentCard);
+
     //Assigning variables to html elements
     tempEl = currentCard.querySelector('.currentWeather');
     conditionImgEl = currentCard.querySelector('.currentConditionIcon');
-    icon = 'http:' + data.current.condition.icon;
+    icon = 'https:' + data.current.condition.icon;
+    // Rendering weather data into html elements.
     tempEl.innerHTML = "Current Temperature: " + data.current.temp_c + degreeC;
     conditionImgEl.setAttribute('src', icon);
     conditionImgEl.setAttribute('alt', data.current.condition.text)
@@ -106,7 +108,7 @@ function displayForecast(forecastData) {
         var TempLowEl = document.getElementById(day + 'TempLow');
         var TempHighEl = document.getElementById(day + 'TempHigh');
         // Changing the src and alt attributes of the condition image element to reflect the forecast condition for that day.
-        CondImgEl.setAttribute('src', 'http:' + forecastDay.day.condition.icon);
+        CondImgEl.setAttribute('src', 'https:' + forecastDay.day.condition.icon);
         CondImgEl.setAttribute('alt', forecastDay.day.condition.text);
         //Changing the innerhtml of html elements to show specified data entry
         TempLowEl.innerHTML = forecastDay.day.mintemp_c + degreeC + spacer;
