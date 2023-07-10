@@ -123,6 +123,10 @@ header {
 header h1 {
   display: inline-block;
   font-size: 48px;
+  font-family: "Roboto Slab", serif;
+  font-style: italic;
+  letter-spacing: 3px;
+  padding-left: 30px;
 }
 
 h2 {
@@ -194,8 +198,4 @@ h3 {
 .thumbnail:hover {
   transform: scale(1.05);
 
-}
-
-.Expanded h1 {
-  padding-left: 15px;
 }

@@ -61,8 +61,6 @@ function setupMap(center) {
     // Add geocoder result to container.
     geocoder.on('result', (event) => {
         const data = event.result;
-        // display the image based on the search result
-        console.log(data)
         // call getDestinationImage function from locationSearch.js to update the carousel images
         getDestinationImage(data.text);
 
@@ -73,8 +71,6 @@ function setupMap(center) {
         // Currently not used code but may be needed for future update.
         //call callWeatherApi function from weatherAPI.js to update the weather data using coordinates
         // var destinationCoords = data.center[1] + "," + data.center[0]
-        // console.log(destinationCoords)
-        // callForecast(destinationCoords);
 
         map.center = data.center;
     });
