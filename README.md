@@ -5,8 +5,8 @@ When you open the application you are presented with recommendations on various 
 
 ## Screenshots
 
-![Screenshot 1](./assets/images/Screenshot1.PNG)
-![Screenshot 2](./assets/images/Screenshot2.PNG)
+![Screenshot 1](./asset/image/Screenshot1.png)
+![Screenshot 2](./asset/image/Screenshot2.png)
 
 
 ## Link to Deployed Application
