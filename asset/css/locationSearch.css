@@ -42,7 +42,6 @@ header {
 .geocoderInput {
     flex: 1 1 100%;
     border-radius: 50px;
-    /* width: 100%; */
 }
 
 .geocoderResetButton {
@@ -84,8 +83,6 @@ header {
 }
 
 .desti-weather {
-    /* border-radius: 20px; */
-    /* border: 3px solid rgba(106, 145, 32, 1); */
     height: 50vh;
     margin-bottom: 0.5em;
 }
@@ -236,7 +233,6 @@ header {
 }
 
 .desti-weather {
-    /* background-color: rgb(158, 216, 250); */
     text-align: center;
 }
 
