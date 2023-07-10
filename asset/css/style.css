@@ -195,3 +195,7 @@ h3 {
   transform: scale(1.05);
 
 }
+
+.Expanded h1 {
+  padding-left: 15px;
+}
